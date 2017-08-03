@@ -2,8 +2,6 @@
 
 ---------------------------------------
 
-{Description}
-
 See the [change log](CHANGELOG.md) for changes and road map.
 
 ## Features

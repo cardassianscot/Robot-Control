@@ -22,6 +22,11 @@ the versions are linked to each post.
 
 These are the changes to each version that has been released. 
 
+## 0.2
+
+- [x] Create textbox and send button for sending instructions to robot
+
+
 ## 0.1
 
 - [x] Initial release
