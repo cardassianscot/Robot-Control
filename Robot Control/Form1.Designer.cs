@@ -34,6 +34,7 @@
             this.btnBack = new System.Windows.Forms.Button();
             this.btnLeft = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.txtBoxInstructions = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -120,17 +121,27 @@
             this.label1.Text = "label1";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // txtBoxInstructions
+            // 
+            this.txtBoxInstructions.Location = new System.Drawing.Point(54, 364);
+            this.txtBoxInstructions.Multiline = true;
+            this.txtBoxInstructions.Name = "txtBoxInstructions";
+            this.txtBoxInstructions.Size = new System.Drawing.Size(344, 83);
+            this.txtBoxInstructions.TabIndex = 1;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(552, 475);
+            this.Controls.Add(this.txtBoxInstructions);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "Form1";
             this.Text = "Robot Control";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -142,6 +153,7 @@
         private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.Button btnLeft;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtBoxInstructions;
     }
 }
 
