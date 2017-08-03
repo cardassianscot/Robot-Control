@@ -35,6 +35,7 @@
             this.btnLeft = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.txtBoxInstructions = new System.Windows.Forms.TextBox();
+            this.btnSend = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -129,11 +130,21 @@
             this.txtBoxInstructions.Size = new System.Drawing.Size(344, 83);
             this.txtBoxInstructions.TabIndex = 1;
             // 
+            // btnSend
+            // 
+            this.btnSend.Location = new System.Drawing.Point(416, 383);
+            this.btnSend.Name = "btnSend";
+            this.btnSend.Size = new System.Drawing.Size(89, 42);
+            this.btnSend.TabIndex = 2;
+            this.btnSend.Text = "Send";
+            this.btnSend.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(552, 475);
+            this.Controls.Add(this.btnSend);
             this.Controls.Add(this.txtBoxInstructions);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "Form1";
@@ -154,6 +165,7 @@
         private System.Windows.Forms.Button btnLeft;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtBoxInstructions;
+        private System.Windows.Forms.Button btnSend;
     }
 }
 
