@@ -76,17 +76,7 @@ namespace Robot_Control
 
         private void btnSend_Click(object sender, EventArgs e)
         {
-            if (btnConnect.Text == "Connect")
-            {
-                serialPort1.PortName = cbxPorts.Text;
-                serialPort1.Open();
-                btnConnect.Text = "Disconnect";
-            }
-            else
-            {
-                serialPort1.Close();
-                btnConnect.Text = "Connect";
-            }
+            serialPort1.Write(txtBoxInstructions.Text);
         }
 
         private void btnSensor_Click(object sender, EventArgs e)
@@ -94,7 +84,7 @@ namespace Robot_Control
             serialPort1.Write("#");
         }
 
-        private void serialPort1_DataReceived(object sender, SerialDataReceivedEventArgs e)
+        private void serialPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
             SerialPort sp = (SerialPort)sender;
             string inData = sp.ReadExisting();
@@ -104,6 +94,38 @@ namespace Robot_Control
                 txtBoxSensor.AppendText(inData);
                 txtBoxSensor.ScrollToCaret();
             }));
+        }
+
+        private void cbxReadPorts_DropDown(object sender, EventArgs e)
+        {
+            string[] names = SerialPort.GetPortNames();
+            Array.Sort(names);
+            cbxPorts.Items.Add("Shared");
+            foreach (var name in names)
+                cbxPorts.Items.Add(name);
+            cbxPorts.SelectedIndex = 0;
+        }
+
+        private void btnConnect_Click(object sender, EventArgs e)
+        {
+            if (btnConnect.Text == "Connect")
+            {
+                serialPort1.PortName = cbxPorts.Text;
+                serialPort1.Open();
+                if (cbxReadPorts.SelectedIndex != 0)
+                {
+                    serialPort2.PortName = cbxReadPorts.Text;
+                    serialPort2.Open();
+                }
+                btnConnect.Text = "Disconnect";
+            }
+            else
+            {
+                serialPort1.Close();
+                if (serialPort2.IsOpen)
+                    serialPort2.Close();
+                btnConnect.Text = "Connect";
+            }
         }
     }
 }

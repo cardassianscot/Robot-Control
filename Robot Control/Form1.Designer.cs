@@ -42,6 +42,8 @@
             this.btnConnect = new System.Windows.Forms.Button();
             this.txtBoxSensor = new System.Windows.Forms.TextBox();
             this.btnSensor = new System.Windows.Forms.Button();
+            this.cbxReadPorts = new System.Windows.Forms.ComboBox();
+            this.serialPort2 = new System.IO.Ports.SerialPort(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -148,25 +150,26 @@
             // 
             // serialPort1
             // 
-            this.serialPort1.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.serialPort1_DataReceived);
+            this.serialPort1.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.serialPort_DataReceived);
             // 
             // cbxPorts
             // 
             this.cbxPorts.FormattingEnabled = true;
-            this.cbxPorts.Location = new System.Drawing.Point(59, 30);
+            this.cbxPorts.Location = new System.Drawing.Point(26, 26);
             this.cbxPorts.Name = "cbxPorts";
-            this.cbxPorts.Size = new System.Drawing.Size(271, 28);
+            this.cbxPorts.Size = new System.Drawing.Size(178, 28);
             this.cbxPorts.TabIndex = 3;
             this.cbxPorts.DropDown += new System.EventHandler(this.cbxPorts_DropDown);
             // 
             // btnConnect
             // 
-            this.btnConnect.Location = new System.Drawing.Point(355, 26);
+            this.btnConnect.Location = new System.Drawing.Point(409, 26);
             this.btnConnect.Name = "btnConnect";
             this.btnConnect.Size = new System.Drawing.Size(120, 35);
             this.btnConnect.TabIndex = 4;
             this.btnConnect.Text = "Connect";
             this.btnConnect.UseVisualStyleBackColor = true;
+            this.btnConnect.Click += new System.EventHandler(this.btnConnect_Click);
             // 
             // txtBoxSensor
             // 
@@ -188,11 +191,25 @@
             this.btnSensor.UseVisualStyleBackColor = true;
             this.btnSensor.Click += new System.EventHandler(this.btnSensor_Click);
             // 
+            // cbxReadPorts
+            // 
+            this.cbxReadPorts.FormattingEnabled = true;
+            this.cbxReadPorts.Location = new System.Drawing.Point(210, 26);
+            this.cbxReadPorts.Name = "cbxReadPorts";
+            this.cbxReadPorts.Size = new System.Drawing.Size(178, 28);
+            this.cbxReadPorts.TabIndex = 7;
+            this.cbxReadPorts.DropDown += new System.EventHandler(this.cbxReadPorts_DropDown);
+            // 
+            // serialPort2
+            // 
+            this.serialPort2.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.serialPort_DataReceived);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(554, 455);
+            this.Controls.Add(this.cbxReadPorts);
             this.Controls.Add(this.btnSensor);
             this.Controls.Add(this.txtBoxSensor);
             this.Controls.Add(this.btnConnect);
@@ -224,6 +241,8 @@
         private System.Windows.Forms.Button btnConnect;
         private System.Windows.Forms.TextBox txtBoxSensor;
         private System.Windows.Forms.Button btnSensor;
+        private System.Windows.Forms.ComboBox cbxReadPorts;
+        private System.IO.Ports.SerialPort serialPort2;
     }
 }
 
