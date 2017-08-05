@@ -88,5 +88,22 @@ namespace Robot_Control
                 btnConnect.Text = "Connect";
             }
         }
+
+        private void btnSensor_Click(object sender, EventArgs e)
+        {
+            serialPort1.Write("#");
+        }
+
+        private void serialPort1_DataReceived(object sender, SerialDataReceivedEventArgs e)
+        {
+            SerialPort sp = (SerialPort)sender;
+            string inData = sp.ReadExisting();
+            inData = inData.Replace("\r", "");
+            BeginInvoke(new EventHandler(delegate
+            {
+                txtBoxSensor.AppendText(inData);
+                txtBoxSensor.ScrollToCaret();
+            }));
+        }
     }
 }
