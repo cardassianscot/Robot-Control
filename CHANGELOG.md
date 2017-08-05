@@ -1,13 +1,13 @@
 # Road map
 
 - Control an Arduino (or Raspberry Pi) powered Robot via 
-  - [ ] mouse and buttons
+  - [x] mouse and buttons
   - [ ] XBox 360 gamepad
   - [ ] keyboard
-- [ ] Use Bluetooth serial for control
+- [x] Use Bluetooth serial for control
 - [ ] Use http for control
-- [ ] Move forwards, backwards, left and right 
-- [ ] Take a sensor reading and display results
+- [x] Move forwards, backwards, left and right 
+- [x] Take a sensor reading and display results
 - [ ] Graphically display radar data 
 - [ ] Graphically program a line following reponse 
 
@@ -21,6 +21,12 @@ the versions are linked to each post.
 # Change log
 
 These are the changes to each version that has been released. 
+
+## 0.3
+
+- [x] Adding serial comunication so the robot can be controlled
+- [x] Adding dual serial control to allow HC-05/HC-06 bluetooth control to work
+- [x] Add sensor reading button and feedback report
 
 ## 0.2
 
