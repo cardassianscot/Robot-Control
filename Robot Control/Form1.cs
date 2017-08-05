@@ -16,54 +16,55 @@ namespace Robot_Control
         public Form1()
         {
             InitializeComponent();
+            disableButtons();
         }
 
         private void btnFwd_MouseDown(object sender, MouseEventArgs e)
         {
             label1.Text = "Forward";
-            serialPort1.Write("f");
+            serialWrite("f");
         }
 
         private void btnFwd_MouseUp(object sender, MouseEventArgs e)
         {
             label1.Text = "Stop";
-            serialPort1.Write("s");
+            serialWrite("s");
         }
 
         private void btnRight_MouseDown(object sender, MouseEventArgs e)
         {
             label1.Text = "Right";
-            serialPort1.Write("r");
+            serialWrite("r");
         }
 
         private void btnRight_MouseUp(object sender, MouseEventArgs e)
         {
             label1.Text = "Stop";
-            serialPort1.Write("s");
+            serialWrite("s");
         }
 
         private void btnLeft_MouseDown(object sender, MouseEventArgs e)
         {
             label1.Text = "Left";
-            serialPort1.Write("l");
+            serialWrite("l");
         }
 
         private void btnLeft_MouseUp(object sender, MouseEventArgs e)
         {
             label1.Text = "Stop";
-            serialPort1.Write("s");
+            serialWrite("s");
         }
 
         private void btnBack_MouseDown(object sender, MouseEventArgs e)
         {
             label1.Text = "Back";
-            serialPort1.Write("b");
+            serialWrite("b");
         }
 
         private void btnBack_MouseUp(object sender, MouseEventArgs e)
         {
             label1.Text = "Stop";
-            serialPort1.Write("s");
+            serialWrite("s");
         }
 
         private void cbxPorts_DropDown(object sender, EventArgs e)
@@ -76,12 +77,12 @@ namespace Robot_Control
 
         private void btnSend_Click(object sender, EventArgs e)
         {
-            serialPort1.Write(txtBoxInstructions.Text);
+            serialWrite(txtBoxInstructions.Text);
         }
 
         private void btnSensor_Click(object sender, EventArgs e)
         {
-            serialPort1.Write("#");
+            serialWrite("#");
         }
 
         private void serialPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
@@ -110,22 +111,77 @@ namespace Robot_Control
         {
             if (btnConnect.Text == "Connect")
             {
-                serialPort1.PortName = cbxPorts.Text;
-                serialPort1.Open();
-                if (cbxReadPorts.SelectedIndex != 0)
+                if (cbxPorts.SelectedIndex == -1)
                 {
-                    serialPort2.PortName = cbxReadPorts.Text;
-                    serialPort2.Open();
+                    MessageBox.Show("You have not selected a Serial Port");
                 }
-                btnConnect.Text = "Disconnect";
+                else
+                {
+                    try
+                    {
+                        serialPort1.PortName = cbxPorts.Text;
+                        serialPort1.Open();
+                        if (cbxReadPorts.SelectedIndex != 0)
+                        {
+                            serialPort2.PortName = cbxReadPorts.Text;
+                            serialPort2.Open();
+                        }
+                        btnConnect.Text = "Disconnect";
+                        enableButtons();
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Serial Port connection has failed.");
+                        serialClose();
+                    }
+                }
             }
             else
             {
-                serialPort1.Close();
-                if (serialPort2.IsOpen)
-                    serialPort2.Close();
-                btnConnect.Text = "Connect";
+                serialClose();
             }
+        }
+
+        private void serialClose()
+        {
+            disableButtons();
+            serialPort1.Close();
+            if (serialPort2.IsOpen)
+                serialPort2.Close();
+            btnConnect.Text = "Connect";
+        }
+
+        private void serialWrite(string s)
+        {
+            try
+            {
+                serialPort1.Write(s);
+            }
+            catch
+            {
+                MessageBox.Show("Serial Port connection has failed.");
+                serialClose();
+            }
+        }
+
+        private void disableButtons()
+        {
+            btnSend.Enabled = false;
+            btnFwd.Enabled = false;
+            btnBack.Enabled = false;
+            btnLeft.Enabled = false;
+            btnRight.Enabled = false;
+            btnSensor.Enabled = false;
+        }
+
+        private void enableButtons()
+        {
+            btnSend.Enabled = true;
+            btnFwd.Enabled = true;
+            btnBack.Enabled = true;
+            btnLeft.Enabled = true;
+            btnRight.Enabled = true;
+            btnSensor.Enabled = true;
         }
     }
 }

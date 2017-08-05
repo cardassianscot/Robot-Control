@@ -150,6 +150,8 @@
             // 
             // serialPort1
             // 
+            this.serialPort1.ReadTimeout = 1000;
+            this.serialPort1.WriteTimeout = 1000;
             this.serialPort1.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.serialPort_DataReceived);
             // 
             // cbxPorts
@@ -202,6 +204,8 @@
             // 
             // serialPort2
             // 
+            this.serialPort2.ReadTimeout = 1000;
+            this.serialPort2.WriteTimeout = 1000;
             this.serialPort2.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.serialPort_DataReceived);
             // 
             // Form1
