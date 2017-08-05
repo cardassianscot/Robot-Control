@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.btnFwd = new System.Windows.Forms.Button();
             this.btnRight = new System.Windows.Forms.Button();
@@ -36,6 +37,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtBoxInstructions = new System.Windows.Forms.TextBox();
             this.btnSend = new System.Windows.Forms.Button();
+            this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
+            this.cbxPorts = new System.Windows.Forms.ComboBox();
+            this.btnConnect = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -138,12 +142,33 @@
             this.btnSend.TabIndex = 2;
             this.btnSend.Text = "Send";
             this.btnSend.UseVisualStyleBackColor = true;
+            this.btnSend.Click += new System.EventHandler(this.btnSend_Click);
+            // 
+            // cbxPorts
+            // 
+            this.cbxPorts.FormattingEnabled = true;
+            this.cbxPorts.Location = new System.Drawing.Point(26, 30);
+            this.cbxPorts.Name = "cbxPorts";
+            this.cbxPorts.Size = new System.Drawing.Size(212, 28);
+            this.cbxPorts.TabIndex = 3;
+            this.cbxPorts.DropDown += new System.EventHandler(this.cbxPorts_DropDown);
+            // 
+            // btnConnect
+            // 
+            this.btnConnect.Location = new System.Drawing.Point(254, 30);
+            this.btnConnect.Name = "btnConnect";
+            this.btnConnect.Size = new System.Drawing.Size(120, 35);
+            this.btnConnect.TabIndex = 4;
+            this.btnConnect.Text = "Connect";
+            this.btnConnect.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(552, 475);
+            this.Controls.Add(this.btnConnect);
+            this.Controls.Add(this.cbxPorts);
             this.Controls.Add(this.btnSend);
             this.Controls.Add(this.txtBoxInstructions);
             this.Controls.Add(this.tableLayoutPanel1);
@@ -166,6 +191,9 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtBoxInstructions;
         private System.Windows.Forms.Button btnSend;
+        private System.IO.Ports.SerialPort serialPort1;
+        private System.Windows.Forms.ComboBox cbxPorts;
+        private System.Windows.Forms.Button btnConnect;
     }
 }
 
