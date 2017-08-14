@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.btnFwd = new System.Windows.Forms.Button();
             this.btnRight = new System.Windows.Forms.Button();
@@ -37,14 +36,16 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtBoxInstructions = new System.Windows.Forms.TextBox();
             this.btnSend = new System.Windows.Forms.Button();
-            this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
-            this.cbxPorts = new System.Windows.Forms.ComboBox();
-            this.btnConnect = new System.Windows.Forms.Button();
             this.txtBoxSensor = new System.Windows.Forms.TextBox();
             this.btnSensor = new System.Windows.Forms.Button();
-            this.cbxReadPorts = new System.Windows.Forms.ComboBox();
-            this.serialPort2 = new System.IO.Ports.SerialPort(this.components);
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.connectionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sslConnection = new System.Windows.Forms.ToolStripStatusLabel();
+            this.sslMessage = new System.Windows.Forms.ToolStripStatusLabel();
             this.tableLayoutPanel1.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -58,7 +59,7 @@
             this.tableLayoutPanel1.Controls.Add(this.btnBack, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.btnLeft, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.label1, 1, 1);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(26, 81);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(26, 45);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
@@ -132,7 +133,7 @@
             // 
             // txtBoxInstructions
             // 
-            this.txtBoxInstructions.Location = new System.Drawing.Point(26, 352);
+            this.txtBoxInstructions.Location = new System.Drawing.Point(26, 316);
             this.txtBoxInstructions.Multiline = true;
             this.txtBoxInstructions.Name = "txtBoxInstructions";
             this.txtBoxInstructions.Size = new System.Drawing.Size(397, 81);
@@ -140,7 +141,7 @@
             // 
             // btnSend
             // 
-            this.btnSend.Location = new System.Drawing.Point(440, 369);
+            this.btnSend.Location = new System.Drawing.Point(440, 333);
             this.btnSend.Name = "btnSend";
             this.btnSend.Size = new System.Drawing.Size(89, 42);
             this.btnSend.TabIndex = 2;
@@ -148,34 +149,9 @@
             this.btnSend.UseVisualStyleBackColor = true;
             this.btnSend.Click += new System.EventHandler(this.btnSend_Click);
             // 
-            // serialPort1
-            // 
-            this.serialPort1.ReadTimeout = 1000;
-            this.serialPort1.WriteTimeout = 1000;
-            this.serialPort1.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.serialPort_DataReceived);
-            // 
-            // cbxPorts
-            // 
-            this.cbxPorts.FormattingEnabled = true;
-            this.cbxPorts.Location = new System.Drawing.Point(26, 26);
-            this.cbxPorts.Name = "cbxPorts";
-            this.cbxPorts.Size = new System.Drawing.Size(178, 28);
-            this.cbxPorts.TabIndex = 3;
-            this.cbxPorts.DropDown += new System.EventHandler(this.cbxPorts_DropDown);
-            // 
-            // btnConnect
-            // 
-            this.btnConnect.Location = new System.Drawing.Point(409, 26);
-            this.btnConnect.Name = "btnConnect";
-            this.btnConnect.Size = new System.Drawing.Size(120, 35);
-            this.btnConnect.TabIndex = 4;
-            this.btnConnect.Text = "Connect";
-            this.btnConnect.UseVisualStyleBackColor = true;
-            this.btnConnect.Click += new System.EventHandler(this.btnConnect_Click);
-            // 
             // txtBoxSensor
             // 
-            this.txtBoxSensor.Location = new System.Drawing.Point(303, 81);
+            this.txtBoxSensor.Location = new System.Drawing.Point(303, 45);
             this.txtBoxSensor.Multiline = true;
             this.txtBoxSensor.Name = "txtBoxSensor";
             this.txtBoxSensor.ReadOnly = true;
@@ -185,7 +161,7 @@
             // 
             // btnSensor
             // 
-            this.btnSensor.Location = new System.Drawing.Point(355, 282);
+            this.btnSensor.Location = new System.Drawing.Point(355, 246);
             this.btnSensor.Name = "btnSensor";
             this.btnSensor.Size = new System.Drawing.Size(120, 43);
             this.btnSensor.TabIndex = 6;
@@ -193,38 +169,68 @@
             this.btnSensor.UseVisualStyleBackColor = true;
             this.btnSensor.Click += new System.EventHandler(this.btnSensor_Click);
             // 
-            // cbxReadPorts
+            // statusStrip1
             // 
-            this.cbxReadPorts.FormattingEnabled = true;
-            this.cbxReadPorts.Location = new System.Drawing.Point(210, 26);
-            this.cbxReadPorts.Name = "cbxReadPorts";
-            this.cbxReadPorts.Size = new System.Drawing.Size(178, 28);
-            this.cbxReadPorts.TabIndex = 7;
-            this.cbxReadPorts.DropDown += new System.EventHandler(this.cbxReadPorts_DropDown);
+            this.statusStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.sslConnection,
+            this.sslMessage});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 425);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(554, 30);
+            this.statusStrip1.TabIndex = 7;
+            this.statusStrip1.Text = "statusStrip1";
             // 
-            // serialPort2
+            // menuStrip1
             // 
-            this.serialPort2.ReadTimeout = 1000;
-            this.serialPort2.WriteTimeout = 1000;
-            this.serialPort2.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.serialPort_DataReceived);
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.connectionToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(554, 33);
+            this.menuStrip1.TabIndex = 8;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // connectionToolStripMenuItem
+            // 
+            this.connectionToolStripMenuItem.Name = "connectionToolStripMenuItem";
+            this.connectionToolStripMenuItem.Size = new System.Drawing.Size(114, 29);
+            this.connectionToolStripMenuItem.Text = "Connection";
+            // 
+            // sslConnection
+            // 
+            this.sslConnection.Name = "sslConnection";
+            this.sslConnection.Size = new System.Drawing.Size(179, 25);
+            this.sslConnection.Text = "toolStripStatusLabel1";
+            // 
+            // sslMessage
+            // 
+            this.sslMessage.Name = "sslMessage";
+            this.sslMessage.Size = new System.Drawing.Size(179, 25);
+            this.sslMessage.Text = "toolStripStatusLabel1";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(554, 455);
-            this.Controls.Add(this.cbxReadPorts);
+            this.Controls.Add(this.statusStrip1);
+            this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.btnSensor);
             this.Controls.Add(this.txtBoxSensor);
-            this.Controls.Add(this.btnConnect);
-            this.Controls.Add(this.cbxPorts);
             this.Controls.Add(this.btnSend);
             this.Controls.Add(this.txtBoxInstructions);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.Text = "Robot Control";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -240,13 +246,13 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtBoxInstructions;
         private System.Windows.Forms.Button btnSend;
-        private System.IO.Ports.SerialPort serialPort1;
-        private System.Windows.Forms.ComboBox cbxPorts;
-        private System.Windows.Forms.Button btnConnect;
         private System.Windows.Forms.TextBox txtBoxSensor;
         private System.Windows.Forms.Button btnSensor;
-        private System.Windows.Forms.ComboBox cbxReadPorts;
-        private System.IO.Ports.SerialPort serialPort2;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel sslConnection;
+        private System.Windows.Forms.ToolStripStatusLabel sslMessage;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem connectionToolStripMenuItem;
     }
 }
 

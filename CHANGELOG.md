@@ -22,6 +22,11 @@ the versions are linked to each post.
 
 These are the changes to each version that has been released. 
 
+## 0.4
+- [x] Refactor code to use an Arduino class 
+- [x] Use a status strip for displaying connection status
+- [x] Use a menu to control connections
+
 ## 0.3
 
 - [x] Adding serial comunication so the robot can be controlled
